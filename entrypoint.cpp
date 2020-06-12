@@ -34,7 +34,7 @@ int __stdcall wWinMain(_In_ HINSTANCE__* h_instance, _In_opt_ HINSTANCE__* h_pre
 
 	void* p_process = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_QUERY_INFORMATION | PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, dw_find_process_id("exename.exe"));
 
-	if (p_process != nullptr) {
+	if (p_process != INVALID_HANDLE_VALUE) {
 		void* p_allocated_memory = VirtualAllocEx(p_process, NULL, sizeof(dll_path), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 
 		if (p_allocated_memory != nullptr) {
